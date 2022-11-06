@@ -47,14 +47,14 @@ def main():
         display_surface.blit(menuArtGun_surf,menuArtGun_rect)
         display_surface.blit(titleText,titleText_rect)
 
-        #start_button.draw(display_surface)
-        settings_button.draw(display_surface)
-
         if quit_button.draw(display_surface) == True:
             gameState = False
 
         if start_button.draw((display_surface)) ==True:
             startgame(display_surface)
+
+        if settings_button.draw((display_surface)) == True:
+            settings(display_surface)
 
 
         pygame.display.update()
@@ -76,6 +76,21 @@ def startgame(surface):
 
         pygame.display.update()
 
+
+def settings(surface):
+    running = True
+    while running:
+        surface.fill((0, 0, 0))
+        chicken = pygame.image.load("chicky2.png").convert_alpha()
+        chicken_rect = chicken.get_rect(center=(640, 360))
+
+        surface.blit(chicken, chicken_rect)
+        for event in pygame.event.get():
+            if event.type == pygame.KEYDOWN:
+                if event.key == pygame.K_ESCAPE:
+                    return
+
+        pygame.display.update()
 
 if __name__ == '__main__':
     main()
