@@ -1,0 +1,103 @@
+PLAYER MOVE METHOD
+-------------------------------------------------------------
+PROCEDURE move IS
+BEGIN
+	IF keypressed is 'w' THEN
+		update sprite
+		move character up
+	ELSE IF keypressed is 'a' THEN
+		update sprite
+		move character down
+	ELSE IF keypressed is 's' THEN
+		update sprite
+		move character left
+	ELSE IF keypressed is 'd' THEN 
+		update sprite
+		move caracter right
+END
+
+---------------------------------------------------------------
+
+PLAYER SHOOT METHOD
+---------------------------------------------------------------
+
+PROCEDURE shoot  IS
+BEGIN
+	IF keypressed is 'up' THEN 
+		set direction to up
+		shoot projectile in up direction
+	ELSE IF keypressed is 'down' THEN
+		set direction to down
+		shoot projectile in down direction
+	ELSE IF keypressed is 'left' THEN
+		set direction to left 
+		shoot projectile in down direction
+	ELSE IF keypressed is 'right' THEN 
+		set direction to right
+		shoot projectile in right direction  
+END
+---------------------------------------------------------------
+
+
+ENEMY MOVE METHOD
+---------------------------------------------------------------
+
+PROCEDURE move IS
+BEGIN
+	IF detect is True THEN 
+		get player position
+		move toward players position 
+	ELSE
+		dont move
+END
+
+
+---------------------------------------------------------------
+ENEMY SHOOT METHOD
+---------------------------------------------------------------
+PROCEDURE shoot IS
+BEGIN
+	IF detect True THEN
+		get player position
+		shoot in direction of player position
+	ELSE
+		dont shoot
+
+END
+---------------------------------------------------------------
+ENEMY DETECT METHOD
+---------------------------------------------------------------
+
+PROCEDURE detect IS
+BEGIN
+	IF player is within enemy Field of view THEN
+		RETURN True
+	ELSE
+		RETURN False
+END
+
+
+---------------------------------------------------------------
+
+
+
+GAME SCREEN CHECK KEY CARD METHOD
+---------------------------------------------------------------
+
+PROCEDURE checkkeycard IS 
+BEGIN
+	IF levels numberOfKeycards is EQUAL TO player numberOfkeyCards THEN
+		RETURN True
+	ELSE
+		RETURN False
+END
+---------------------------------------------------------------
+
+
+
+
+
+
+
+
+
