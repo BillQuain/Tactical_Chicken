@@ -64,11 +64,16 @@ def main():
 def startgame(surface):
     running = True
     while running:
-        surface.fill((0,0,0))
-        chicken = pygame.image.load("chicky.png").convert_alpha()
-        chicken_rect = chicken.get_rect(center = (640,360))
+        surface.fill((160,153,100))
+        background  = pygame.image.load("background.png").convert_alpha()
+        background_rect = background.get_rect(center = (640,360))
+        hud = pygame.image.load("gameHUD.png").convert_alpha()
+        hud_rect = hud.get_rect(center = (880,660))
 
-        surface.blit(chicken,chicken_rect)
+
+        surface.blit(background,background_rect)
+        surface.blit(hud,hud_rect)
+
         for event in pygame.event.get():
             if event.type == pygame.KEYDOWN:
                 if event.key == pygame.K_ESCAPE:
@@ -82,7 +87,7 @@ def settings(surface):
     while running:
         surface.fill((0, 0, 0))
         chicken = pygame.image.load("chicky2.png").convert_alpha()
-        chicken_rect = chicken.get_rect(center=(640, 360))
+        chicken_rect = chicken.get_rect(center=(740, 260))
 
         surface.blit(chicken, chicken_rect)
         for event in pygame.event.get():
