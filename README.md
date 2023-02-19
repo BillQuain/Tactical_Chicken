@@ -171,11 +171,12 @@ In Tactical Chicken the software allows the user to move the character around a 
 - Character (Parent class)
   - Player
   - Enemy
-    - Miniboss
+  - Miniboss
 
 - World object(parent)
   - Walls
   - Obstacles
+
 - Items(parent)
   - Weapons
   - keycards
