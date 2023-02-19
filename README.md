@@ -312,7 +312,7 @@ This software will be portable, reliable, maintainable, and usable. Python progr
 
 **Intel UHD integrated graphics** - a graphics processor integrated into select Intel Core processors for laptops
 
-**LDtk -** 2D level editor
+**Tiled -** 2D level editor
 
 **Piskel** - pixel art program
 
