@@ -332,15 +332,18 @@ This software will be portable, reliable, maintainable, and usable. Python progr
 
 ## **Appendix B: Analysis Models**
 
-## ![](RackMultipart20230219-1-t2gith_html_d7b8590425d32cf3.png)
+## 
+![](stateMachine.drawio.png)
 
-![](RackMultipart20230219-1-t2gith_html_980ab69ad4b2038.png)
+![](Lab6ActivityDiagram.drawio.png)
 
-![](RackMultipart20230219-1-t2gith_html_3ed9216709a6fdd1.png)
+![](ClassDiagram.drawio.png)
 
-![](RackMultipart20230219-1-t2gith_html_ed37a6b818923aeb.png)
+![](Lab5UseCaseDiagram.drawio.png)
 
-![](RackMultipart20230219-1-t2gith_html_b13fd066b26e8afc.png)
+![](SequenceDiagram.png)
+![](CS492Lab3SS1.png)
+
 
 ## **Appendix C: Issues List**
 
