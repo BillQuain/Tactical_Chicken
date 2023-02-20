@@ -136,7 +136,7 @@ The goal of Tactical Chicken is to provide a top down action game that features 
 
 ## **1.2 Document Conventions**
 
-Times New Roman font used throughout the document. There are multiple chapters with sections, a table of contents, and multiple appendices.
+This is a markdown format file. There are multiple chapters with sections, a table of contents, and multiple appendices.
 
 ## **1.3 Intended Audience and Reading suggestions**
 
