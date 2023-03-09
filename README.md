@@ -344,6 +344,7 @@ This software will be portable, reliable, maintainable, and usable. Python progr
 ![](SequenceDiagram.png)
 ![](CS492Lab3SS1.PNG)
 ![](GanttChart.PNG)
+![](GanttChart2.PNG)
 
 
 ## **Appendix C: Issues List**
