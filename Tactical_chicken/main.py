@@ -4,12 +4,53 @@
 import pygame, sys
 import button as bt
 from settings import *
+from pygame.math import Vector2 as vector
+from player import Player
+
+class AllSprites(pygame.sprite.Group):
+	def __init__(self):
+		super().__init__()
+		self.offset = vector()
+		self.display_surface = pygame.display.get_surface()
+		self.bg = pygame.image.load('LevelOne.png').convert()
+		scale_factor = 4
+		original_width, original_height = self.bg.get_size()
+
+		#scale the map
+		scaled_width = int(original_width * scale_factor)
+		scaled_height = int(original_height * scale_factor)
+		self.scaled_map = pygame.transform.scale(self.bg, (scaled_width,scaled_height))
+
+
+	def customize_draw(self,player):
+
+		self.offset.x = player.rect.centerx - WINDOW_WIDTH/2
+		self.offset.y = player.rect.centery - WINDOW_HEIGHT/2
+
+		self.display_surface.blit(self.scaled_map,-self.offset)
+
+		for sprite in self.sprites():
+			offset_rect = sprite.image.get_rect(center = sprite.rect.center)
+			offset_rect.center -= self.offset
+			self.display_surface.blit(sprite.image,offset_rect)
+
+
+
 class Game:
 	def __init__(self):
 		pygame.init()
 		self.display_surface = pygame.display.set_mode((WINDOW_WIDTH, WINDOW_HEIGHT))
 		pygame.display.set_caption('TACTICAL CHICKEN by Bill And Tim')
 		self.clock = pygame.time.Clock()
+
+		#groups
+		self.all_sprites = AllSprites()
+		self.setup()
+
+
+
+
+
 		#TACTICAL CHICKEN title
 		self.title_text = pygame.image.load('tactchicl.png').convert_alpha()
 		self.title_rect = self.title_text.get_rect(center = (720,200))
@@ -31,21 +72,32 @@ class Game:
 		#self.settings_button = bt.Button(600,380,self.set_butt_image,4)
 		#self.quit_button = bt.Button(1150,640,self.quit_but_image,1)
 
-	def startgame(self,surface):
+	def setup(self):
+		self.player = Player((200,200),self.all_sprites,None,None)
+
+	def startgame(self,surface,dt):
 		surface.fill((160,153,100))
-		background = pygame.image.load("background.png").convert_alpha()
+		background = pygame.image.load("levelOne.png").convert()
 		background_rect = background.get_rect(center = (640,360))
 		hud = pygame.image.load("gameHUD.png").convert_alpha()
 		hud_rect = hud.get_rect(center=(880, 660))
 
-		surface.blit(background, background_rect)
-		surface.blit(hud, hud_rect)
+		#surface.blit(background, background_rect)
+		#surface.blit(hud, hud_rect)
 		while True:
 			for event in pygame.event.get():
 				if event.type == pygame.KEYDOWN:
 					if event.key == pygame.K_ESCAPE:
 						return
 
+			#update groups
+			self.all_sprites.update(dt)
+
+			#draw groups
+			self.display_surface.fill('black')
+			#self.display_surface.blit(background,background_rect)
+			#self.display_surface.blit(hud,hud_rect)
+			self.all_sprites.customize_draw(self.player)
 			pygame.display.update()
 
 	def settings(self,surface):
@@ -83,7 +135,7 @@ class Game:
 			self.settings_button.draw(self.display_surface)
 			#button code
 			if self.start_button.is_clicked():
-				self.startgame(self.display_surface)
+				self.startgame(self.display_surface,dt)
 			if self.settings_button.is_clicked():
 				self.settings(self.display_surface)
 			if self.quit_button.is_clicked():
