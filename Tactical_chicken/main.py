@@ -73,7 +73,7 @@ class Game:
 		#self.quit_button = bt.Button(1150,640,self.quit_but_image,1)
 
 	def setup(self):
-		self.player = Player((200,200),self.all_sprites,None,None)
+		self.player = Player((300,300),self.all_sprites,None,None)
 
 	def startgame(self,surface,dt):
 		surface.fill((160,153,100))

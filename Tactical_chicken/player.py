@@ -4,8 +4,9 @@ from pygame.math import Vector2 as vector
 class Player(pygame.sprite.Sprite):
     def __init__(self,pos,groups,path, collisions_sprites):
         super().__init__(groups)
-        self.image = pygame.Surface((16,16))
-        self.image.fill('red')
+
+        self.image = pygame.image.load("RwhiteChickScaled.png")
+
 
 
         self.rect = self.image.get_rect(center = pos)
