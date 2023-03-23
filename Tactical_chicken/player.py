@@ -1,11 +1,12 @@
 import pygame
 from pygame.math import Vector2 as vector
+from os import walk
 
 class Player(pygame.sprite.Sprite):
     def __init__(self,pos,groups,path, collisions_sprites):
         super().__init__(groups)
-
-        self.image = pygame.image.load("RwhiteChickScaled.png")
+        self.import_assets(path)
+        self.image = pygame.image.load("./player/RwhiteChickScaled.png")
 
 
 
@@ -19,6 +20,15 @@ class Player(pygame.sprite.Sprite):
         #collisions
         self.hitbox = self.rect.inflate(0,-self.rect.height/2)
         self.collision_sprites = collisions_sprites
+
+    def import_assets(self,path):
+        self.animations = {}
+
+        for index,folder in enumerate(walk(path)):
+            if index == 0:
+                for name in folder[2]:
+                    self.animations[name] = []
+        print(self.animations)
 
     def input(self):
         keys = pygame.key.get_pressed()

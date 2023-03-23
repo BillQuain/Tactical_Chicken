@@ -55,10 +55,16 @@ class Game:
 		self.title_text = pygame.image.load('tactchicl.png').convert_alpha()
 		self.title_rect = self.title_text.get_rect(center = (720,200))
 		#chicken and uzi art
-		self.menueArt_surf = pygame.image.load("chicky2.png").convert_alpha()
-		self.menueArt_rect = self.menueArt_surf.get_rect(center = (350,540))
-		self.menueArtGun_surf = pygame.image.load("uzi.png").convert_alpha()
-		self.menueArtGun_rect = self.menueArtGun_surf.get_rect(center =(350,540))
+		self.menueArt_surf = pygame.image.load("./player/RwhiteChickScaled.png").convert_alpha()
+		og_width, og_height = self.menueArt_surf.get_size()
+		self.scale = 8
+		self.scaled_chicken_art = pygame.transform.scale(self.menueArt_surf,(og_width * self.scale , og_height * self.scale))
+		self.scaled_chicken_art_rect = self.scaled_chicken_art.get_rect(center = (350,540))
+
+
+		#self.menueArtGun_surf = pygame.image.load("uzi.png").convert_alpha()
+		#self.menueArtGun_rect = self.menueArtGun_surf.get_rect(center =(350,540))
+
 		#button images
 		self.quit_butt_image = pygame.image.load("quit.png").convert_alpha()
 		self.start_butt_image = pygame.image.load("StartBtn.png").convert_alpha()
@@ -73,7 +79,7 @@ class Game:
 		#self.quit_button = bt.Button(1150,640,self.quit_but_image,1)
 
 	def setup(self):
-		self.player = Player((300,300),self.all_sprites,None,None)
+		self.player = Player((300,300),self.all_sprites,"./player",None)
 
 	def startgame(self,surface,dt):
 		surface.fill((160,153,100))
@@ -127,8 +133,8 @@ class Game:
 			#fills the background to green
 			self.display_surface.fill((59,97,30))
 			#display menue art and title
-			self.display_surface.blit(self.menueArt_surf,self.menueArt_rect)
-			self.display_surface.blit(self.menueArtGun_surf,self.menueArtGun_rect)
+			self.display_surface.blit(self.scaled_chicken_art,self.scaled_chicken_art_rect)
+			#self.display_surface.blit(self.menueArtGun_surf,self.menueArtGun_rect)
 			self.display_surface.blit(self.title_text,self.title_rect)
 			self.start_button.draw(self.display_surface)
 			self.quit_button.draw(self.display_surface)
