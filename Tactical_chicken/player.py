@@ -3,7 +3,7 @@ from pygame.math import Vector2 as vector
 
 
 class Player(pygame.sprite.Sprite):
-    def __init__(self, pos, groups, path, collisions_sprites):
+    def __init__(self, pos, groups, path, collisions_sprites, create_bullets):
         super().__init__(groups)
         self.status = 'Down'
 
@@ -24,25 +24,61 @@ class Player(pygame.sprite.Sprite):
         self.hitbox = self.rect.inflate(0,-self.rect.height/2)
         self.collision_sprites = collisions_sprites
 
+        #attack
+        self.attacking  = False
+        self.create_bullet = create_bullets
+        self.shootTime = None
+
     def input(self):
+
         keys = pygame.key.get_pressed()
         if keys[pygame.K_RIGHT]:
             self.direction.x = 1
             self.image = self.rightimage
+            self.status = "right"
         elif keys[pygame.K_LEFT]:
             self.direction.x = -1
             self.image = self.leftimage
+            self.status = "left"
         else:
             self.direction.x = 0
 
         if keys[pygame.K_UP]:
             self.direction.y = -1
             self.image = self.upimage
+            self.status = "up"
         elif keys[pygame.K_DOWN]:
             self.direction.y = 1
             self.image = self.downimage
+            self.status = "down"
         else:
             self.direction.y = 0
+
+
+        if keys[pygame.K_SPACE] and not self.attacking:
+            self.attacking = True
+            self.direction = vector()
+            self.shootTime = pygame.time.get_ticks()
+            if self.status == "right":
+                self.create_bullet(self.rect.center, vector(1,0))
+            elif self.status == "left":
+                self.create_bullet(self.rect.center, vector(-1,0))
+            elif self.status == "up":
+                self.create_bullet(self.rect.center, vector(0,-1))
+            elif self.status == "down":
+                self.create_bullet(self.rect.center, vector(0,1))
+
+        self.bulletTimer(150)
+
+
+
+    def bulletTimer(self, duration = 100):
+        if self.attacking:
+            current_time = pygame.time.get_ticks()
+            if current_time - self.shootTime >= duration:
+                self.attacking = False
+
+
 
     def move(self, dt):
         # normalize vector
@@ -88,6 +124,7 @@ class Player(pygame.sprite.Sprite):
 
     def update(self, dt):
         self.input()
+
         self.move(dt)
 
 

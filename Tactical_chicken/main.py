@@ -7,7 +7,7 @@ from settings import *
 from pygame.math import Vector2 as vector
 from player import Player
 from pytmx.util_pygame import load_pygame
-from sprite import Sprite
+from sprite import Sprite, Bullet
 
 class AllSprites(pygame.sprite.Group):
 	def __init__(self):
@@ -38,15 +38,24 @@ class AllSprites(pygame.sprite.Group):
 
 class Game:
 	def __init__(self):
+
 		pygame.init()
 		self.display_surface = pygame.display.set_mode((WINDOW_WIDTH, WINDOW_HEIGHT))
 		pygame.display.set_caption('TACTICAL CHICKEN by Bill And Tim')
 		self.clock = pygame.time.Clock()
+		self.bullet_surf = pygame.image.load("bullet.png").convert_alpha()
 
 		# groups
 		self.all_sprites = AllSprites()
+
 		self.obstacles = pygame.sprite.Group()
+		self.bullets = pygame.sprite.Group()
+
+
+
 		self.setup()
+
+
 
 		# TACTICAL CHICKEN title
 		self.title_text = pygame.image.load('tactchicl.png').convert_alpha()
@@ -68,6 +77,8 @@ class Game:
 		self.settings_button = bt.Button(self.set_butt_image, 600, 380, 4)
 		self.quit_button = bt.Button(self.quit_butt_image, 1150, 640, 1)
 
+	def create_bullet(self, pos, direction):
+		Bullet(pos, direction, self.bullet_surf, [self.bullets, self.all_sprites])
 
 	def setup(self):
 		tmx_map = load_pygame('LevelOne.tmx')
@@ -76,10 +87,14 @@ class Game:
 
 		for obj in tmx_map.get_layer_by_name('Entity Layer'):
 			if obj.name == 'Player':
-				self.player = Player((obj.x * 4, obj.y * 4), self.all_sprites, "./player/",self.obstacles)
+				self.player = Player(pos = (obj.x * 4, obj.y * 4),
+									 groups = self.all_sprites,
+									 path= "./player/",
+									 collisions_sprites=self.obstacles,
+									 create_bullets = self.create_bullet)
 
 	def startgame(self,surface,dt):
-		surface.fill((160,153,100))
+		
 
 		while True:
 			for event in pygame.event.get():
