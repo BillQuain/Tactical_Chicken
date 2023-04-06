@@ -3,7 +3,7 @@ from pygame.math import Vector2 as vector
 
 
 class Player(pygame.sprite.Sprite):
-    def __init__(self, pos, groups, path, collisions_sprites, create_bullets):
+    def __init__(self, pos, groups,path, collisions_sprites, create_bullets):
         super().__init__(groups)
         self.status = 'Down'
 

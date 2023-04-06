@@ -8,6 +8,7 @@ from pygame.math import Vector2 as vector
 from player import Player
 from pytmx.util_pygame import load_pygame
 from sprite import Sprite, Bullet
+from enemy import Enemy
 
 class AllSprites(pygame.sprite.Group):
 	def __init__(self):
