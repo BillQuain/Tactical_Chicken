@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.9" tiledversion="1.9.2" orientation="orthogonal" renderorder="right-down" width="64" height="64" tilewidth="8" tileheight="8" infinite="0" nextlayerid="6" nextobjectid="6">
+<map version="1.9" tiledversion="1.9.2" orientation="orthogonal" renderorder="right-down" width="64" height="64" tilewidth="8" tileheight="8" infinite="0" nextlayerid="6" nextobjectid="25">
  <tileset firstgid="1" source="City.tsx"/>
  <layer id="1" name="Ground" width="64" height="64" locked="1">
   <data encoding="csv">
@@ -137,8 +137,56 @@
 3430,3431,3431,3431,3431,3431,3431,536872978,1610616757,1610616821,1610616747,1610616811,2684356626,3430,3430,3430,3430,3430,3430,3430,3430,3430,3430,3430,3431,3430,3431,536872978,1610616756,1610616820,1610616747,1610616811,2684356626,3430,3431,3431,3431,3431,3431,3431,3431,3431,3431,3431,3431,3431,3431,536872978,1610616756,1610616820,1610616747,1610616811,2684356626,3430,3430,3431,3430,3431,3430,3431,3430,3431,3430,3431
 </data>
  </layer>
- <objectgroup id="3" name="Entity Layer" locked="1">
+ <objectgroup id="3" name="Entity Layer">
   <object id="4" name="Player" x="80.3636" y="15.0909">
+   <point/>
+  </object>
+  <object id="6" name="Turkey" x="184.667" y="78.6667">
+   <point/>
+  </object>
+  <object id="7" name="Turkey" x="350" y="130.667">
+   <point/>
+  </object>
+  <object id="8" name="Turkey" x="288" y="192.667">
+   <point/>
+  </object>
+  <object id="9" name="Turkey" x="77.3333" y="144.667">
+   <point/>
+  </object>
+  <object id="11" name="Turkey" x="238.667" y="238">
+   <point/>
+  </object>
+  <object id="12" name="Turkey" x="159.333" y="450.667">
+   <point/>
+  </object>
+  <object id="13" name="Turkey" x="78" y="334">
+   <point/>
+  </object>
+  <object id="14" name="Turkey" x="400" y="242.667">
+   <point/>
+  </object>
+  <object id="15" name="Turkey" x="274" y="322">
+   <point/>
+  </object>
+  <object id="17" name="Turkey" x="398.667" y="404">
+   <point/>
+  </object>
+  <object id="19" name="Turkey" x="436" y="82.6667">
+   <point/>
+  </object>
+  <object id="20" name="Turkey" x="312" y="438.667">
+   <point/>
+  </object>
+  <object id="21" name="Turkey" x="241.333" y="40">
+   <point/>
+  </object>
+  <object id="22" name="Turkey" x="10.6667" y="82.6667">
+   <point/>
+  </object>
+  <object id="23" name="Turkey" x="30" y="137.333">
+   <point/>
+  </object>
+  <object id="24" name="Turkey" x="368" y="318.667">
    <point/>
   </object>
  </objectgroup>
