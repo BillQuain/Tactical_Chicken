@@ -20,11 +20,11 @@ class Sprite(pygame.sprite.Sprite):
 
 
 class Bullet(pygame.sprite.Sprite):
-    def __init__(self, pos, direction, surf, groups):
+    def __init__(self, pos, direction, surf, groups, source):
         super().__init__(groups)
         self.image = surf
         self.rect = self.image.get_rect(center = pos)
-
+        self.source = source
 
         #float based movement
         self.pos = pygame.math.Vector2(self.rect.center)
@@ -35,8 +35,6 @@ class Bullet(pygame.sprite.Sprite):
         self.pos += self.direction * self.speed * dt
         self.rect.center = (round(self.pos.x), round(self.pos.y))
 
-        if self.rect.x >2500 or self.rect.x < -100 or self.rect.y >2000 or self.rect.y < 0 :
-            self.kill()
 
 
 

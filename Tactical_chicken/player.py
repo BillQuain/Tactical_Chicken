@@ -1,4 +1,4 @@
-import pygame
+import pygame, sys
 from pygame.math import Vector2 as vector
 
 
@@ -6,7 +6,9 @@ class Player(pygame.sprite.Sprite):
     def __init__(self, pos, groups,path, collisions_sprites, create_bullets):
         super().__init__(groups)
         self.status = 'Down'
-
+        self.health = 100
+        self.is_vulnerable = True
+        self.hit_time = None
 
         self.image = pygame.image.load("./player/Down/0.png")
         self.rightimage = pygame.image.load('./player/Right/0.png')
@@ -18,7 +20,7 @@ class Player(pygame.sprite.Sprite):
         #float based movement
         self.pos = vector(self.rect.center)
         self.direction = vector()
-        self.speed = 200
+        self.speed = 250
 
         #collisions
         self.hitbox = self.rect.inflate(0,-self.rect.height/2)
@@ -28,6 +30,25 @@ class Player(pygame.sprite.Sprite):
         self.attacking  = False
         self.create_bullet = create_bullets
         self.shootTime = None
+
+    def damage(self):
+        if self.is_vulnerable:
+            self.health -= 10
+            self.is_vulnerable = False
+            self.hit_time = pygame.time.get_ticks()
+            if self.health <= 0:
+                print("dead")
+
+    def check_death(self):
+        if self.health <= 0:
+            pygame.quit()
+            sys.exit()
+
+    def vulnerability_timer(self):
+        if not self.is_vulnerable:
+            current_time = pygame.time.get_ticks()
+            if current_time - self.hit_time > 400:
+                self.is_vulnerable = True
 
     def input(self):
 
@@ -60,13 +81,13 @@ class Player(pygame.sprite.Sprite):
             self.direction = vector()
             self.shootTime = pygame.time.get_ticks()
             if self.status == "right":
-                self.create_bullet(self.rect.center, vector(1,0))
+                self.create_bullet((self.rect.x+ 50, self.rect.y) , vector(1,0), "player")
             elif self.status == "left":
-                self.create_bullet(self.rect.center, vector(-1,0))
+                self.create_bullet((self.rect.x -50, self.rect.y) , vector(-1,0), "player")
             elif self.status == "up":
-                self.create_bullet(self.rect.center, vector(0,-1))
+                self.create_bullet((self.rect.x, self.rect.y -50)  , vector(0,-1), "player")
             elif self.status == "down":
-                self.create_bullet(self.rect.center, vector(0,1))
+                self.create_bullet((self.rect.x, self.rect.y +50) , vector(0,1), "player")
 
         self.bulletTimer(150)
 
@@ -123,9 +144,10 @@ class Player(pygame.sprite.Sprite):
                         self.pos.y = self.hitbox.centery
 
     def update(self, dt):
+        self.check_death()
         self.input()
-
         self.move(dt)
+        self.vulnerability_timer()
 
 
 

@@ -51,6 +51,7 @@ class Game:
 
 		self.obstacles = pygame.sprite.Group()
 		self.bullets = pygame.sprite.Group()
+		self.enemies  = pygame.sprite.Group()
 
 
 
@@ -78,8 +79,25 @@ class Game:
 		self.settings_button = bt.Button(self.set_butt_image, 600, 380, 4)
 		self.quit_button = bt.Button(self.quit_butt_image, 1150, 640, 1)
 
-	def create_bullet(self, pos, direction):
-		Bullet(pos, direction, self.bullet_surf, [self.bullets, self.all_sprites])
+	def create_bullet(self, pos, direction, source):
+		Bullet(pos, direction, self.bullet_surf, [self.bullets, self.all_sprites], None)
+
+	def bullet_collision(self):
+
+		for obstacle in self.obstacles.sprites():
+			pygame.sprite.spritecollide(obstacle, self.bullets, True)
+
+		for bullet in self.bullets.sprites():
+			sprites = pygame.sprite.spritecollide(bullet,self.enemies,False)
+
+			if sprites:
+				bullet.kill()
+				for sprite in sprites:
+					sprite.damage()
+
+		if pygame.sprite.spritecollide(self.player, self.bullets, True):
+			self.player.damage()
+
 
 	def setup(self):
 		tmx_map = load_pygame('LevelOne.tmx')
@@ -93,6 +111,8 @@ class Game:
 									 path= "./player/",
 									 collisions_sprites=self.obstacles,
 									 create_bullets = self.create_bullet)
+			if obj.name == "Turkey":
+				Enemy((obj.x * 4, obj.y* 4), [self.all_sprites,self.enemies], self.obstacles, self.create_bullet, self.player)
 
 	def startgame(self,surface,dt):
 		
@@ -105,7 +125,7 @@ class Game:
 
 			# update groups
 			self.all_sprites.update(dt)
-
+			self.bullet_collision()
 			# draw groups
 			self.display_surface.fill('black')
 			# self.display_surface.blit(background,background_rect)
