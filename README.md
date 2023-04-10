@@ -333,15 +333,17 @@ This software will be portable, reliable, maintainable, and usable. Python progr
 ## **Appendix B: Analysis Models**
 
 ## 
-![](stateMachine.drawio.png)
-
+STATE MACHINE
+![](StateMachine.drawio.png)
+ACTIVITY DIAGRAM
 ![](Lab6ActivityDiagram.drawio.png)
-
+CLASS DIAGRAM
 ![](ClassDiagram.drawio.png)
-
+USE CASE DIAGRAM
 ![](Lab5UseCaseDiagram.drawio.png)
+SEQUENCE DIAGRAM
+![](sequenceDiagram.png)
 
-![](SequenceDiagram.png)
 ![](CS492Lab3SS1.PNG)
 ![](GanttChart.PNG)
 ![](GanttChart2.PNG)
