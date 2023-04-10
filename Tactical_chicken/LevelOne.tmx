@@ -141,52 +141,46 @@
   <object id="4" name="Player" x="80.3636" y="15.0909">
    <point/>
   </object>
-  <object id="6" name="Turkey" x="184.667" y="78.6667">
+  <object id="6" name="Turkey" x="399.334" y="88">
    <point/>
   </object>
-  <object id="7" name="Turkey" x="350" y="130.667">
+  <object id="7" name="Turkey" x="319.333" y="165.334">
    <point/>
   </object>
-  <object id="8" name="Turkey" x="288" y="192.667">
+  <object id="9" name="Turkey" x="32.6666" y="248">
    <point/>
   </object>
-  <object id="9" name="Turkey" x="77.3333" y="144.667">
+  <object id="11" name="Turkey" x="237.334" y="246.667">
    <point/>
   </object>
-  <object id="11" name="Turkey" x="238.667" y="238">
+  <object id="12" name="Turkey" x="81.333" y="485.334">
    <point/>
   </object>
-  <object id="12" name="Turkey" x="159.333" y="450.667">
+  <object id="13" name="Turkey" x="30.6667" y="410.667">
    <point/>
   </object>
-  <object id="13" name="Turkey" x="78" y="334">
-   <point/>
-  </object>
-  <object id="14" name="Turkey" x="400" y="242.667">
+  <object id="14" name="Turkey" x="466.667" y="248">
    <point/>
   </object>
   <object id="15" name="Turkey" x="274" y="322">
    <point/>
   </object>
-  <object id="17" name="Turkey" x="398.667" y="404">
+  <object id="17" name="Turkey" x="454" y="408">
    <point/>
   </object>
-  <object id="19" name="Turkey" x="436" y="82.6667">
+  <object id="19" name="Turkey" x="366" y="329.333">
    <point/>
   </object>
-  <object id="20" name="Turkey" x="312" y="438.667">
+  <object id="20" name="Turkey" x="240.667" y="487.334">
    <point/>
   </object>
-  <object id="21" name="Turkey" x="241.333" y="40">
+  <object id="21" name="Turkey" x="399.333" y="486">
    <point/>
   </object>
-  <object id="22" name="Turkey" x="28.6667" y="83.3334">
+  <object id="22" name="Turkey" x="238.667" y="90.0001">
    <point/>
   </object>
   <object id="23" name="Turkey" x="30" y="137.333">
-   <point/>
-  </object>
-  <object id="24" name="Turkey" x="368" y="318.667">
    <point/>
   </object>
   <object id="25" x="413.333" y="-126">
