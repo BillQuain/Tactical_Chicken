@@ -157,6 +157,7 @@ class Game:
 					sys.exit()
 			# delta time so game runs at proper speed
 			dt = self.clock.tick() / 1000
+
 			# fills the background to green
 			self.display_surface.fill((59,97,30))
 			# display menue art and title
