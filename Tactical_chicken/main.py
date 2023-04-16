@@ -72,11 +72,11 @@ class Game:
 		# button images
 		self.quit_butt_image = pygame.image.load("quit.png").convert_alpha()
 		self.start_butt_image = pygame.image.load("StartBtn.png").convert_alpha()
-		self.set_butt_image = pygame.image.load("settingsBtn.png").convert_alpha()
+
 		# buttons
 
 		self.start_button = bt.Button(self.start_butt_image, 600, 280, 4)
-		self.settings_button = bt.Button(self.set_butt_image, 600, 380, 4)
+
 		self.quit_button = bt.Button(self.quit_butt_image, 1150, 640, 1)
 
 	def create_bullet(self, pos, direction, source):
@@ -166,12 +166,10 @@ class Game:
 			self.display_surface.blit(self.title_text,self.title_rect)
 			self.start_button.draw(self.display_surface)
 			self.quit_button.draw(self.display_surface)
-			self.settings_button.draw(self.display_surface)
+
 			# button code
 			if self.start_button.is_clicked():
 				self.startgame(self.display_surface,dt)
-			if self.settings_button.is_clicked():
-				self.settings(self.display_surface)
 			if self.quit_button.is_clicked():
 				pygame.quit()
 				sys.exit()
