@@ -363,3 +363,9 @@ SEQUENCE DIAGRAM
 ## **Appendix C: Issues List**
 
 There are no issues discovered yet with the program.
+
+## **Appendix D: Github**
+
+https://github.com/BillQuain/cs491_project_Tactical_Chicken
+
+
