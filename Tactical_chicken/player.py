@@ -36,8 +36,6 @@ class Player(pygame.sprite.Sprite):
             self.health -= 10
             self.is_vulnerable = False
             self.hit_time = pygame.time.get_ticks()
-            if self.health <= 0:
-                print("dead")
 
     def check_death(self):
         if self.health <= 0:
